@@ -13,35 +13,38 @@ function App() {
   }
 
   return (
-    <main className="container">
-      <h1>Welcome to Tauri + React</h1>
+    <main className="flex min-h-screen flex-col items-center justify-center bg-gray-100 p-4 text-center">
+      <h1 className="text-2xl font-bold">Welcome to Tauri + React</h1>
 
-      <div className="row">
+      <div className="flex gap-4 mt-4 mb-4">
         <a href="https://vite.dev" target="_blank">
-          <img src="/vite.svg" className="logo vite" alt="Vite logo" />
+          <img src="/vite.svg" className="size-10" alt="Vite logo" />
         </a>
         <a href="https://tauri.app" target="_blank">
-          <img src="/tauri.svg" className="logo tauri" alt="Tauri logo" />
+          <img src="/tauri.svg" className="size-10" alt="Tauri logo" />
         </a>
         <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
+          <img src={reactLogo} className="size-10" alt="React logo" />
         </a>
       </div>
       <p>Click on the Tauri, Vite, and React logos to learn more.</p>
 
       <form
-        className="row"
+        className="flex gap-2 justify-center mb-4 mt-4"
         onSubmit={(e) => {
           e.preventDefault();
           greet();
         }}
       >
         <input
+          className="border-b outline-none"
           id="greet-input"
           onChange={(e) => setName(e.currentTarget.value)}
           placeholder="Enter a name..."
         />
-        <button type="submit">Greet</button>
+        <button className="px-2 py-1 border rounded-md" type="submit">
+          Greet
+        </button>
       </form>
       <p>{greetMsg}</p>
     </main>

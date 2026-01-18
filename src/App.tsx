@@ -2,6 +2,7 @@ import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import { invoke } from "@tauri-apps/api/core";
 import "./App.css";
+import { NavLink } from "react-router";
 
 function App() {
   const [greetMsg, setGreetMsg] = useState("");
@@ -28,6 +29,27 @@ function App() {
         </a>
       </div>
       <p>Click on the Tauri, Vite, and React logos to learn more.</p>
+
+      <nav className="flex gap-4 mt-4 mb-4">
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? "text-blue-500" : "text-black"
+          }
+          to="/"
+          end
+        >
+          Home
+        </NavLink>
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? "text-blue-500" : "text-black"
+          }
+          to="/dashboard"
+          end
+        >
+          Dashboard
+        </NavLink>
+      </nav>
 
       <form
         className="flex gap-2 justify-center mb-4 mt-4"

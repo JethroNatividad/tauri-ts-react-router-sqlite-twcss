@@ -1,19 +1,10 @@
-import Database from "@tauri-apps/plugin-sql";
+import { loadDb } from "../database";
 
 export interface Todo {
   id: number;
   title: string;
   status: "PENDING" | "DONE";
 }
-
-let db: Database | null = null;
-
-const loadDb = async () => {
-  if (!db) {
-    db = await Database.load("sqlite:app.db");
-  }
-  return db;
-};
 
 export const getTodos = async (): Promise<Todo[]> => {
   const db = await loadDb();

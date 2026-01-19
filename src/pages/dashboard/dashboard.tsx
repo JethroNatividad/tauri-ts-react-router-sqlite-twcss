@@ -46,7 +46,7 @@ const Dashboard = () => {
         ) : (
           <div>
             {todos.map((todo) => (
-              <Todo key={todo.id} todo={todo} />
+              <Todo key={todo.id} todo={todo} setTodos={setTodos} />
             ))}
           </div>
         )}

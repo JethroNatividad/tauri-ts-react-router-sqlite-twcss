@@ -1,5 +1,5 @@
 import React from "react";
-import { Todo as TodoType, updateTodo } from "../../../api/todos";
+import { Todo as TodoType, updateTodo, deleteTodo } from "../../../api/todos";
 
 type Props = {
   todo: TodoType;
@@ -7,7 +7,7 @@ type Props = {
 };
 
 const Todo = ({ todo, setTodos }: Props) => {
-  const toggleStatus = async () => {
+  const handleToggleStatus = async () => {
     const newStatus = todo.status === "PENDING" ? "DONE" : "PENDING";
     await updateTodo({ ...todo, status: newStatus });
     setTodos((prevTodos) =>
@@ -17,12 +17,20 @@ const Todo = ({ todo, setTodos }: Props) => {
     );
   };
 
+  const handleDeleteTodo = async () => {
+    await deleteTodo(todo.id);
+    setTodos((prevTodos) => prevTodos.filter((t) => t.id !== todo.id));
+  };
+
   return (
-    <div
-      onClick={toggleStatus}
-      className={`${todo.status === "DONE" ? "line-through text-gray-500" : ""} border-b border-gray-300 py-2`}
-    >
-      {todo.title}
+    <div className="flex justify-between border-b border-gray-300 py-2">
+      <div
+        onClick={handleToggleStatus}
+        className={`${todo.status === "DONE" ? "line-through text-gray-500" : ""}`}
+      >
+        {todo.title}
+      </div>
+      <button onClick={handleDeleteTodo}>Delete</button>
     </div>
   );
 };

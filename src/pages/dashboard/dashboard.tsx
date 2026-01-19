@@ -39,7 +39,7 @@ const Dashboard = () => {
         </NavLink>
       </nav>
       <CreateTodo setTodos={setTodos} />
-      <div>
+      <div className="w-full max-w-md mt-6 bg-white p-4 rounded shadow">
         <h2 className="text-xl font-bold mb-4">Todo List</h2>
         {todos.length === 0 ? (
           <p>No todos found.</p>

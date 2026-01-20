@@ -30,7 +30,9 @@ const Todo = ({ todo, setTodos }: Props) => {
       >
         {todo.title}
       </div>
-      <button onClick={handleDeleteTodo}>Delete</button>
+      <button className="text-red-500" onClick={handleDeleteTodo}>
+        Delete
+      </button>
     </div>
   );
 };
